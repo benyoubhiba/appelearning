@@ -35,6 +35,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'enseignant', targetEntity: Classe::class)]
     private $classes;
 
+    #[ORM\ManyToOne(targetEntity: Cours::class, inversedBy: 'id_professeur')]
+    private $cours;
+
     public function __construct()
     {
         $this->classes = new ArrayCollection();
@@ -179,6 +182,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $class->setEnseignant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCours(): ?Cours
+    {
+        return $this->cours;
+    }
+
+    public function setCours(?Cours $cours): self
+    {
+        $this->cours = $cours;
 
         return $this;
     }

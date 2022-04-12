@@ -24,9 +24,13 @@ class Classe
     #[ORM\ManyToMany(targetEntity: Aprennant::class, mappedBy: 'classe')]
     private $aprennants;
 
+    #[ORM\ManyToMany(targetEntity: Cours::class, mappedBy: 'id_classe')]
+    private $cours;
+
     public function __construct()
     {
         $this->aprennants = new ArrayCollection();
+        $this->cours = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,6 +84,33 @@ class Classe
     {
         if ($this->aprennants->removeElement($aprennant)) {
             $aprennant->removeClasse($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cours>
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Cours $cour): self
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours[] = $cour;
+            $cour->addIdClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): self
+    {
+        if ($this->cours->removeElement($cour)) {
+            $cour->removeIdClasse($this);
         }
 
         return $this;
