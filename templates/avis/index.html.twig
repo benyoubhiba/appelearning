@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AvisController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+ <section class="scroll-section" id="stripedRows">
+                  <h2 class="small-title">Striped Rows</h2>
+                  <div class="card mb-5">
+                    <div class="card-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Comment</th>
+                            <th scope="col">Cours</th>
+                             <th scope="col">Suprimer</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {%for avis in avis %}
+                          <tr>
+                            <th>{{avis.id}}</th>
+                            <td>{{avis.message}}</td>
+                            <td>{{avis.idcours}}</td>
+                         	<td>
+													<a href="{{path('avis_delete',{id:avis.id})}}" class="btn  btn-danger" onclick="if(!confirm('Are you sure ?')) { return false; }">
+														Delete</a>
+												</td>
+           
+   </tr>
+
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+
+
+{% endblock %}

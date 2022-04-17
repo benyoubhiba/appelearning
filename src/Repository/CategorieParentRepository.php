@@ -73,4 +73,19 @@ class CategorieParentRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getAllCategories()
+    {
+        return $this->createQueryBuilder('u')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+    public function getOneCategorieParent($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id='.$id)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
 }
