@@ -89,4 +89,8 @@ class CategorieRepository extends ServiceEntityRepository
             ->getArrayResult()
         ;
     }
+
+  
+
 }
+

@@ -26,7 +26,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Form\Type  ;
            $builder
            ->add('nom', TextType::class)
            ->add('discription',TextType::class)
-        
+           ->add('parent_id', EntityType::class, array(
+            'class' => Categorie::class,
+            'required' => false,
+            'mapped' => false,
+           
+
+        ))
        ;
         }
     }

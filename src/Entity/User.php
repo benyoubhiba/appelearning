@@ -12,6 +12,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+/**
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorMap({"user" = "User", "aprennant" = "Aprenant"superadmin="Superadmin"})
+ */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AprennantRepository::class)]
-class Aprennant
+class Aprennant  extends User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

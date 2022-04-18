@@ -39,6 +39,7 @@
             <th scope="col">Id</th>
             <th scope="col">Categorie </th>
             <th scope="col">Discription</th>
+            <th scope="col">parent</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -49,6 +50,7 @@
             <th>{{categorie.id}}</th>
             <td>{{categorie.nom}}</td>
             <td>{{categorie.discription}}</td>
+            <td>{{categorie.parent}}</td>
             <td>
               <a href="{{path('categorie_delete',{id:categorie.id})}}"
                 class="btn btn-icon btn-icon-only btn-outline-secondary mb-1"
@@ -80,6 +82,11 @@
                         <label for="inputPassword4" class="form-label">Cin
                         </label>
                         <p>{{categorie.discription}}</p>
+                      </div>
+                         <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Cin
+                        </label>
+                        <p>{{categorie.parent}}</p>
                       </div>
                     </div>
 
@@ -123,7 +130,7 @@
         $("#id").val(data.id)
         $("#nom").val(data.nom)
         $("#discription").val(data.discription)
-
+        $("#parent").val(data.parentId)
       })
       .catch(function (error) {
         console.log("errr")
@@ -138,7 +145,7 @@
       "id": $("#id").val(),
       "nom": $("#nom").val(),
       "discription": $("#discription").val(),
-
+   "parentId": $("#parent").val(),
     }
     axios.post("codeEditCategorie", form).then(function (res) {
         alert("success")
@@ -164,6 +171,7 @@
         <input type="hidden" id="id">
         nom:<input type="text" id="nom" class="form-control"><br>
         discription:<input type="text" id="discription" class="form-control"><br>
+        parent:<input type="text" id="parent" class="form-control"><br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -188,6 +196,7 @@
         {{ form_row(form.nom,{'attr':{'class':'form-control'}}) }}
 
         {{ form_row(form.discription,{'attr':{'class':'form-control'}}) }}
+             {{ form_row(form.parent_id,{'attr':{'class':'form-control'}}) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
