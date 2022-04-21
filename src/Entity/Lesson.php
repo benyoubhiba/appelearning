@@ -24,9 +24,9 @@ class Lesson
     #[ORM\OneToMany(mappedBy: 'id_lesson', targetEntity: Devoir::class)]
     private $devoirs;
 
-    #[ORM\ManyToOne(targetEntity: Chapitre::class, inversedBy: 'lessons')]
+    /*#[ORM\ManyToOne(targetEntity: Chapitre::class, inversedBy: 'lessons')]
     #[ORM\JoinColumn(nullable: false)]
-    private $id_chapitre;
+    private $id_chapitre;*/
 
     public function __construct()
     {
