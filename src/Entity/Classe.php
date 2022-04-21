@@ -27,6 +27,10 @@ class Classe
     #[ORM\ManyToMany(targetEntity: Cours::class, mappedBy: 'id_classe')]
     private $cours;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\File( "image/jpeg" , "image/png" , "image/tiff" , "image/svg+xml")]
+    private $image;
+
     public function __construct()
     {
         $this->aprennants = new ArrayCollection();
@@ -112,6 +116,18 @@ class Classe
         if ($this->cours->removeElement($cour)) {
             $cour->removeIdClasse($this);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -39,6 +39,10 @@ class Cours
     #[ORM\OneToOne(targetEntity: Certificat::class, cascade: ['persist', 'remove'])]
     private $id_certificat;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\File( "image/jpeg" , "image/png" , "image/tiff" , "image/svg+xml")]
+    private $image;
+
     public function __construct()
     {
         $this->id_professeur = new ArrayCollection();
@@ -210,6 +214,18 @@ class Cours
     public function setIdCertificat(?Certificat $id_certificat): self
     {
         $this->id_certificat = $id_certificat;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
