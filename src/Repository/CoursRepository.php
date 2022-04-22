@@ -73,4 +73,12 @@ class CoursRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getOneCourse($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id='.$id)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
 }

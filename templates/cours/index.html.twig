@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours index{% endblock %}
+
+
+{% block body %}
+<section class="scroll-section" id="title">
+  <div class="page-title-container">
+    <h1 class="mb-0 pb-0 display-4">Cours</h1>
+    <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+      <ul class="breadcrumb pt-0">
+        <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
+        <li class="breadcrumb-item"><a href="Interface.Components.html">Components</a></li>
+
+      </ul>
+    </nav>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+      <!-- Button trigger modal -->
+
+      <a href="{{ path('app_cours_new') }}" class="btn btn-icon btn-icon-only btn-outline-secondary mb-1"> <i
+          data-acorn-icon="plus"></i></a>
+    </div>
+  </div>
+</section>
+<!-- Title End -->
+<!-- Content Start -->
+<div class="row g-0">
+
+    <div class="row  row-cols-1 row-cols-md-2 row-cols-xl-3 ">
+      {% for cour in cours %}
+      <div class="col">
+        <div class="card h-100">
+          <img src="{{ asset('img/course/small/'~ cour.image) }}" class="card-img-top sh-22" alt="card image" />
+
+
+          <div class="card-body">
+            <h5 class="heading mb-0"><a class="body-link">{{ cour.nom }}</a></h5>
+          </div>
+          <div class="card-footer border-0 pt-0">
+            <div class="mb-2">
+
+              <div class="text-muted d-inline-block text-small align-text-top">{{ cour.description }}</div></div>
+          <a href="{{ path('app_cours_show', {'id': cour.id}) }}">show</a>
+  <a  href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</div>
+    {% endblock %}

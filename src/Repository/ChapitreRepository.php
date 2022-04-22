@@ -73,4 +73,17 @@ class ChapitreRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getOneChapitre($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id='.$id)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+
+
+
+
 }

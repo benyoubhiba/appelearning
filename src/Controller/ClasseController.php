@@ -29,6 +29,17 @@ class ClasseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('image')->getData();
+            
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            try {
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }   $classe->setImage($fileName);
             $classeRepository->add($classe);
             return $this->redirectToRoute('app_classe_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -54,6 +65,17 @@ class ClasseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('image')->getData();
+            
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            try {
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }   $classe->setImage($fileName);
             $classeRepository->add($classe);
             return $this->redirectToRoute('app_classe_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -5,7 +5,18 @@
 {% block body %}
     <h1>Create new Classe</h1>
 
-    {{ include('classe/_form.html.twig') }}
-
-    <a href="{{ path('app_classe_index') }}">back to list</a>
+						   <div class="modal-body">
+        <input type="hidden" id="id">
+		  	{{ form_row(form.nom,{'attr':{'class':'form-control'}}) }}<br>
+     		{{ form_row(form.enseignant,{'attr':{'class':'form-control'}}) }}
+    	{{ form_row(form.cours,{'attr':{'class':'form-control'}}) }}<br>
+{{ form_row(form.image,{'attr':{'class':'form-control'}}) }}
+<br>
+      </div>
+      <div class="modal-footer">
+    <button class="btn">{{ button_label|default('Save') }}</button>
+                                        <a href="{{ path('app_classe_index') }}">back to list</a>
+      </div>
+					
 {% endblock %}
+ 

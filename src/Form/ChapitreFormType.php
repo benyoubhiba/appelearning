@@ -2,21 +2,23 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Cours;
+use App\Entity\Chapitre;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-use Symfony\Component\Form\FormBuilderInterface;                                        
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type  ;                
+use Symfony\Component\Form\FormBuilderInterface;                                        
  use Symfony\Component\Form\ChoiceList\ChoiceList;
  use Symfony\Component\Form\Extension\Core\Type\HiddenType;
  use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  use Symfony\Component\OptionsResolver\OptionsResolver;
+ 
 
 
- class CategorieType extends AbstractType
+ class ChapitreType extends AbstractType
 {
      
     public function buildForm(FormBuilderInterface $builder, array $form): void
@@ -25,10 +27,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Form\Type  ;
         {
            $builder
            ->add('nom', TextType::class)
-           ->add('discription',TextType::class)
-           
-        ->add('parent', EntityType::class,[
-            'class' => Categorie::class,
+     
+           ->add('id_cours', EntityType::class,[
+            'class' =>Cours::class,
        
         ])
        ;
@@ -37,7 +38,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Form\Type  ;
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Categorie::class,
+            'data_class' => Chapitre::class,
             
         ]);
     }

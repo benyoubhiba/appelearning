@@ -113,7 +113,7 @@ class CategorieController extends AbstractController
             $categorie = $this->em->find(Categorie::class,(int)$data->id);
             $categorie->setNom($data->nom);
             $categorie->setdiscription($data->discription);
-            $categorie->setparent($data->parentId);
+            $categorie->setparent($data->parent_id);
             $this->em->persist($categorie);
             $this->em->flush();
 

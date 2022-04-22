@@ -21,19 +21,17 @@ class Classe
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'classes')]
     private $enseignant;
 
-    #[ORM\ManyToMany(targetEntity: Aprennant::class, mappedBy: 'classe')]
-    private $aprennants;
 
     #[ORM\ManyToMany(targetEntity: Cours::class, mappedBy: 'id_classe')]
     private $cours;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\File( "image/jpeg" , "image/png" , "image/tiff" , "image/svg+xml")]
+
     private $image;
 
     public function __construct()
     {
-        $this->aprennants = new ArrayCollection();
+      
         $this->cours = new ArrayCollection();
     }
 
@@ -66,32 +64,7 @@ class Classe
         return $this;
     }
 
-    /**
-     * @return Collection<int, Aprennant>
-     */
-    public function getAprennants(): Collection
-    {
-        return $this->aprennants;
-    }
-
-    public function addAprennant(Aprennant $aprennant): self
-    {
-        if (!$this->aprennants->contains($aprennant)) {
-            $this->aprennants[] = $aprennant;
-            $aprennant->addClasse($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAprennant(Aprennant $aprennant): self
-    {
-        if ($this->aprennants->removeElement($aprennant)) {
-            $aprennant->removeClasse($this);
-        }
-
-        return $this;
-    }
+   
 
     /**
      * @return Collection<int, Cours>
@@ -130,5 +103,10 @@ class Classe
         $this->image = $image;
 
         return $this;
+    }
+    public function __toString()
+    {
+        $res=$this->nom;
+        return (string) $res;
     }
 }

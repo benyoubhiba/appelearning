@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 /**
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorMap({"user" = "User", "aprennant" = "Aprenant"superadmin="Superadmin"})
+ * @ORM\DiscriminatorMap({"user" = "User"})
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -202,5 +202,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->cours = $cours;
 
         return $this;
+    }
+    public function __toString()
+    {
+        $res=$this->nom;
+        return (string) $res;
     }
 }
