@@ -76,6 +76,7 @@ class ClasseController extends AbstractController
             } catch (FileException $e) {
                 // ... handle exception if something happens during file upload
             }   $classe->setImage($fileName);
+
             $classeRepository->add($classe);
             return $this->redirectToRoute('app_classe_index', [], Response::HTTP_SEE_OTHER);
         }

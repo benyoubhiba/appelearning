@@ -32,4 +32,9 @@ class Certificat
 
         return $this;
     }
+    public function __toString()
+    {
+        $res=$this->libellé;
+        return (string) $res;
+    }
 }

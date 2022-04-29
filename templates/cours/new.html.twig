@@ -3,9 +3,41 @@
 {% block title %}New Cours{% endblock %}
 
 {% block body %}
-    <h1>Create new Cours</h1>
+   
+<div class="modal-content">
+      <div class="modal-header">
+ <h1>Create new Cours</h1>
+     
+      </div>{{ form_start(form ) }}
+      <div class="modal-body">
 
-    {{ include('cours/_form.html.twig') }}
+        {{ form_row(form.nom,{'attr':{'class':'form-control'}}) }}
 
-    <a href="{{ path('app_cours_index') }}">back to list</a>
-{% endblock %}
+        {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+             {{ form_row(form.id_forum,{'attr':{'class':'form-control'}}) }}
+{#  
+           {{ form_row(form.id_classe,{'attr':{'class':'form-control'}}) }} #}
+            {{ form_row(form.id_certificat,{'attr':{'class':'form-control'}}) }}
+            <br>
+            {{ form_row(form.image,{'attr':{'class':'form-control'}}) }}
+          
+      </div>
+     
+      <div class="modal-footer">
+         <a type="button" class="btn btn-outline-primary" href="{{ path('app_cours_index') }}" >back to list</a>
+ 
+        <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+             
+      </div>
+     
+        <br>
+      {{ form_end(form ) }}
+    </div>
+  
+   
+  </fieldset>
+
+ {{ form_end(form) }}
+  
+
+     {% endblock %}

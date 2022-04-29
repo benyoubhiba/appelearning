@@ -111,9 +111,10 @@ class CategorieController extends AbstractController
             $data = json_decode($request->getContent());
 
             $categorie = $this->em->find(Categorie::class,(int)$data->id);
+            $exp = $this->em->find(Categorie::class,(int)$data->parent_id);
             $categorie->setNom($data->nom);
             $categorie->setdiscription($data->discription);
-            $categorie->setparent($data->parent_id);
+            // $categorie->setparent($data->parent_id);
             $this->em->persist($categorie);
             $this->em->flush();
 

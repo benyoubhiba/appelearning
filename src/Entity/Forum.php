@@ -47,4 +47,9 @@ class Forum
 
         return $this;
     }
+    public function __toString()
+    {
+        $res=$this->nom;
+        return (string) $res;
+    }
 }

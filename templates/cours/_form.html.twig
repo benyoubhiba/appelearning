@@ -1,4 +1,13 @@
+
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+ 
+     {# {{ form_row(form.image,{'attr':{'onchange':'file_changed()','id':'input'}}) }}
+
+  <input onchange=file_changed() type=file id= input>
+  <img src="{{ asset('/uploads/' ~  cour.image) }}" id=img alt="Image" width="150"> #}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+

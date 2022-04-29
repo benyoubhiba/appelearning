@@ -25,14 +25,17 @@
   </div>
 </section>
 <!-- Title End -->
-<!-- Content Start -->
-<div class="row g-0">
 
-    <div class="row  row-cols-1 row-cols-md-2 row-cols-xl-3 ">
+
+            <div class="col">
+              <!-- List Items Start -->
+            
+    <div class="row g-3 row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 mb-5">
+             
       {% for cour in cours %}
       <div class="col">
         <div class="card h-100">
-          <img src="{{ asset('img/course/small/'~ cour.image) }}" class="card-img-top sh-22" alt="card image" />
+          <img src="{{ asset('/uploads/'~ cour.image) }}" class="card-img-top sh-22" alt="card image" />
 
 
           <div class="card-body">
@@ -51,7 +54,19 @@
       {% endfor %}
 
     </div>
+                    
+                </div>
+                </div>
 
-  </div>
-</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button class="btn btn-outline-primary sw-25">Load More</button>
+                </div>
+              </div>
+              <!-- List Items End -->
+            </div>
+          </div>
+       
     {% endblock %}
