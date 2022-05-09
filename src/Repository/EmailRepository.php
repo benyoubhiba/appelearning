@@ -73,4 +73,19 @@ class EmailRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getAllEmails()
+    {
+        return $this->createQueryBuilder('u')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+    public function getOneEmail($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id='.$id)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
 }
