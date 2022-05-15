@@ -73,4 +73,19 @@ class ForumRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getAllForums()
+    {
+        return $this->createQueryBuilder('u')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+    public function getOneForum($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id='.$id)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
 }
